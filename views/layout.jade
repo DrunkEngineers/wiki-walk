@@ -39,6 +39,7 @@ html
 
         $('.modal').modal('toggle');
         $('.hero-unit').hide();
+        $('.loading').show();
         startWalk($url, $depth, $link);
       });
 
@@ -83,6 +84,7 @@ html
     }
 
     function drawNode(node) {
+      $('.loading').hide();
       root = node;
       root.x0 = h / 2;
       root.y0 = 0;
