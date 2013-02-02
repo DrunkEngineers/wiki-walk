@@ -38,7 +38,7 @@ html
         var $link = $('#links :selected').val();
 
         $('.modal').modal('toggle');
-        //-build($url, $depth, $link);
+        startWalk($url, $depth, $link);
       });
 
       $('.start').on('click', function() {
