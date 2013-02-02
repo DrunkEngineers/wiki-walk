@@ -76,7 +76,6 @@ function startWalk(title, $maxDepth, $maxLinksPerPage) {
   maxLinksPerPage = $maxLinksPerPage;
 
   iterate(title, initialState, function(node){
-    console.log(node.children.length);
     drawNode(node);
   });
 }
