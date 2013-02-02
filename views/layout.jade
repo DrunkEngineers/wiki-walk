@@ -147,7 +147,7 @@ html
 
       nodeUpdate.select("circle")
           .attr("r", 4.5)
-          .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+          .style("fill", function(d) { return d._children ? (d.depth*1677721).toString(16) : "#fff"; });
 
       nodeUpdate.select("text")
           .style("fill-opacity", 1);
