@@ -17,6 +17,16 @@ block content
           form.navbar-form.pull-right
             button.start.btn(type='button') Start
 
+  .loading(style='display:none;')
+    img(src='/img/loading.gif')
+
+  .hero-unit
+    img.pull-left(src='/img/logo.png')
+    h1.pull-right Welcome to WikiWalk
+    .clearfix
+    p Have you ever wondered how Wikipedia articles are linked? Well now you can graphically view it! Using WikiWalk, you can specify a Wikipedia article, and our application will generate a tree of all the linked articles, and all of their linked articles, and all of their linked articles....you get the point.
+    p Click on the Start button above to get started!
+
   .container-fluid
     .modal.fade.hide
       .modal-header
@@ -41,6 +51,7 @@ block content
               option(value='20') 20
               option(value='30') 30
               option(value='40') 40
+        p Press Continue to start your WikiWalk!
       .modal-footer
         button.cancel.btn(type='button',data-dismiss='modal', aria-hidden='true') Cancel
         button.continue.btn.btn-primary(type='button') Continue
