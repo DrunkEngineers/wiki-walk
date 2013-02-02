@@ -13,9 +13,9 @@ block content
           ul.nav
             li.active: a(href='#') Home
             li: a(href='#') About
-    
+
   .container-fluid
-    .modal.fade
+    .modal.fade.hide
       .modal-header
         button.close(type='button', data-dismiss="modal") &times;
         h3 Enter Paramaters for WikiWalk
@@ -24,3 +24,20 @@ block content
           fieldset
             label(for='url') Wikipedia Link
             input#url.input-xlarge(type='text', placeholder='Enter Wikipedia URL')
+            label(for='depth') Depth
+            select#depth
+              option(selected, value='1') 1
+              option(value='2') 2
+              option(value='3') 3
+              option(value='4') 4
+              option(value='5') 5
+              option(value='6') 6
+            label(for='links') Links to Pull
+            select#links
+              option(selected, value='10') 10
+              option(value='20') 20
+              option(value='30') 30
+              option(value='40') 40
+      .modal-footer
+        button.cancel.btn(type='button') Cancel
+        button.continue.btn.btn-primary(type='button') Continue
