@@ -58,6 +58,6 @@ var initialState = {
   shouldContinue: true
 };
 
-iterate("dog", initialState, function(){
-  // Render
+iterate("dog", initialState, function(node){
+  drawNode(node);
 });
