@@ -64,17 +64,6 @@ html
       .append("svg:g")
         .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
-    // Test objects. Remove later!!!
-    test = Object();
-    test.name = "It works!";
-    test.url = "http://www.google.ca";
-    test.children = [];
-
-    lol = Object();
-    lol.name = "LOL";
-    lol.children = [test];
-    lol.url = "http://en.wikipedia.org/wiki/Lol";
-
     function toggleAll(d) {
       if (d.children) {
           d.children.forEach(toggleAll);
@@ -92,13 +81,17 @@ html
       m.children = null;
     }
 
-    function drawNode(node) {
+    function lol(node) {
       root = node;
       root.x0 = h / 2;
       root.y0 = 0;
 
-      //collapseAll(root);
+      collapseAll(root);
       update(root);
+    }
+
+    function drawNode(node) {
+      setTimeout(function(){lol(node);}, 3000);
     }
 
     function update(source) {
