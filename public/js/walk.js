@@ -8,16 +8,19 @@ function iterate(title, state, callback) {
     {
       var node = buildNode(response);
       var nextState = getNextState(node, state);
+      if(!nextState.alreadyVisited) pageTable[node.title] = node;
 
       if(nextState.shouldContinue)
       {
         console.log(node.name);
+        console.log(node.childLinks);
         for (var i = 0; i < node.childLinks.length - 1; i++) {
-          iterate(node.childLinks[i].title, nextState, function(childNode) {
+          var nextTitle = node.childLinks[i].title;
+          iterate(nextTitle, nextState, function(childNode) {
             node.children.push(childNode);
           })
         };
-      }
+      }      
 
       callback(node);
     }      
@@ -44,8 +47,6 @@ function getNextState(node, state) {
     alreadyVisited: nextAlreadyVisited,
     shouldContinue: nextDepth < maxDepth && !nextAlreadyVisited
   };
-
-  if(!nextState.alreadyVisited) pageTable[node.title] = node;
 
   return nextState;
 }
