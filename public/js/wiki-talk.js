@@ -1,7 +1,7 @@
 function readPageData(title, callback) {
   var url = "http://en.wikipedia.org/w/api.php?action=query&prop=links&" +
     "format=json&plnamespace=0&pllimit=" + 
-    maxLinksPerPage +
+    499 +
     "&iwurl=&indexpageids=&callback=?&titles=" + 
     title;
   var json = $.getJSON(url, function() {
