@@ -43,10 +43,10 @@ html
     test.url = "http://www.google.ca";
     test.children = [];
 
-    root = Object();
-    root.name = "LOL";
-    root.children = [test];
-    root.url = "http://en.wikipedia.org/wiki/Lol";
+    lol = Object();
+    lol.name = "LOL";
+    lol.children = [test];
+    lol.url = "http://en.wikipedia.org/wiki/Lol";
 
     function toggleAll(d) {
       if (d.children) {
@@ -55,7 +55,8 @@ html
       }
     }
 
-    function drawNode(root) {
+    function drawNode(node) {
+      root = node;
       root.x0 = h / 2;
       root.y0 = 0;
 
