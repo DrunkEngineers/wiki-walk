@@ -9,5 +9,9 @@
     "express": "3.1.0",
     "jade": "*",
     "less-middleware": "*"
+  },
+  "engine": {
+    "node": "0.8.x",
+    "npm": "1.2.*"
   }
 }
