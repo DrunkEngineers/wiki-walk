@@ -23,6 +23,22 @@ html
     
     $(document).ready(function(){
 
+      function showWarning() {
+        if (Math.pow($('#links').val(), $('#depth').val()) > 10000) {
+          $('.warning-container').show();
+        }
+        else {
+          $('.warning-container').hide();
+        }
+      }
+
+      $('#depth').change(function() { 
+        showWarning();
+      });
+      $('#links').change(function() { 
+        showWarning();
+      });
+
       $('.continue').on('click', function(e) {
 
         var $url = $('#url').val();

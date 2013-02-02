@@ -53,5 +53,9 @@ block content
               option(value='40') 40
         p Press Continue to start your WikiWalk!
       .modal-footer
+        .warning-container(style='display:none;')
+          .pull-left
+            .label.label-warning Warning!
+            font(size=1) &nbsp;&nbsp;&nbsp;Wikipedia might get mad at you (too many requests lol)
         button.cancel.btn(type='button',data-dismiss='modal', aria-hidden='true') Cancel
         button.continue.btn.btn-primary(type='button') Continue
