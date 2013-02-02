@@ -35,15 +35,16 @@ block content
       .append("svg:g")
         .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
+    // Test objects. Remove later!!!
     test = Object();
     test.name = "It works!";
+    test.url = "http://www.google.ca";
     test.children = [];
 
     root = Object();
     root.name = "LOL";
     root.children = [test];
-    root.x0 = h / 2;
-    root.y0 = 0;
+    root.url = "http://en.wikipedia.org/wiki/Lol";
 
     function toggleAll(d) {
       if (d.children) {
@@ -52,7 +53,12 @@ block content
       }
     }
 
-    update(root);
+    function drawNode(root) {
+      root.x0 = h / 2;
+      root.y0 = 0;
+
+      update(root);
+    }
 
     function update(source) {
       var duration = d3.event && d3.event.altKey ? 5000 : 500;
@@ -81,6 +87,7 @@ block content
           .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
           .attr("dy", ".35em")
           .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+          .attr("href", function(d) { return d.url; })
           .text(function(d) { return d.name; })
           .style("fill-opacity", 1e-6);
 
