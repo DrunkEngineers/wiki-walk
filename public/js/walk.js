@@ -1,3 +1,7 @@
+var pageTable = {};
+var maxDepth,
+  maxLinksPerPage;
+
 function iterate(title, state, callback) {
   readPageData(title, function(error, response) {
     if(error)
@@ -51,14 +55,17 @@ function getNextState(node, state) {
   return nextState;
 }
 
-var pageTable = {};
-var maxDepth = 3;
-var initialState = {
-  depth: 0,
-  alreadyVisited: false,
-  shouldContinue: true
-};
+function startWalk(title, $maxDepth, $maxLinksPerPage) {
+  var initialState = {
+    depth: 0,
+    alreadyVisited: false,
+    shouldContinue: true
+  };
 
-iterate("dog", initialState, function(node){
-  drawNode(node);
-});
+  maxDepth = $maxDepth;
+  maxLinksPerPage = $maxLinksPerPage;
+
+  iterate(title, initialState, function(node){
+    drawNode(node);
+  });
+}
