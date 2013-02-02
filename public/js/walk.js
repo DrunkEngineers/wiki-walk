@@ -31,14 +31,16 @@ function iterate(title, state, callback) {
 function walkChildren(node, nextState, callback) {
   console.log(node.name);
   console.log(node.childLinks);
-  for (var i = 0; i < node.childLinks.length - 1; i++) {
+
+  var count = 0;
+  for (var i = 0; i < node.childLinks.length; i++) {
     var nextTitle = node.childLinks[i].title;
     iterate(nextTitle, nextState, function(childNode) {
       node.children.push(childNode);
+      count += 1;
+      if(count === node.childLinks.length) callback(node);
     })
   };
-
-  callback(node);
 }
 
 function buildNode(pageData) {
