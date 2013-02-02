@@ -38,6 +38,7 @@ html
         var $link = $('#links :selected').val();
 
         $('.modal').modal('toggle');
+        $('.hero-unit').hide();
         startWalk($url, $depth, $link);
       });
 
@@ -81,17 +82,13 @@ html
       m.children = null;
     }
 
-    function lol(node) {
+    function drawNode(node) {
       root = node;
       root.x0 = h / 2;
       root.y0 = 0;
 
       collapseAll(root);
       update(root);
-    }
-
-    function drawNode(node) {
-      setTimeout(function(){lol(node);}, 3000);
     }
 
     function update(source) {
