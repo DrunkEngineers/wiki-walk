@@ -8,6 +8,12 @@ function iterate(title, state, callback) {
     {
       alert("Error!");
     }
+    else if(response.query.pages[response.query.pageids[0]].links === undefined)
+    {
+      console.log("Empty list!");
+      var node = buildNode(response);
+      callback(node);
+    }
     else
     {
       var node = buildNode(response);
@@ -44,14 +50,50 @@ function walkChildren(node, nextState, callback) {
 }
 
 function buildNode(pageData) {
+  var array = pageData.query.pages[pageData.query.pageids[0]].links;
+  var randomArray = [];
+  if(array !== undefined)
+  {
+    var randNum = [];
+    var length = Math.min(array.length, maxLinksPerPage);
+
+    for(var i = 0; i < length; i++) {
+      var num = Math.floor(Math.random() * array.length);
+      while(_.contains(randNum, num)) {
+        num = Math.floor(Math.random() * array.length);
+      }
+      randNum.push(num);
+      randomArray.push(array[num]);
+    }
+  }
+
   var node = {
     name: pageData.query.pages[pageData.query.pageids[0]].title,
-    childLinks: pageData.query.pages[pageData.query.pageids[0]].links,
+    childLinks: randomArray,
     children: [],
     url: "http://en.wikipedia.org/wiki/" + name
   };
 
   return node;
+}
+
+function randomArrayOfLength(array, maxLength) {
+  var randomArray = [];
+  if(array === undefined) return randomArray;
+  var randNum = [];
+  var length = Math.min(array.length, maxLength);
+
+  for(var i = 0; i < length; i++) {
+    var num = Math.floor(Math.random() * array.length);
+    while(_.contains(randNum, num)) {
+      num = Math.floor(Math.random() * array.length);
+    }
+    randNum.push(num);
+    randomArray.push(array[num]);
+  }
+  console.log(randNum);
+
+  return randomArray;
 }
 
 function getNextState(node, state) {
@@ -78,6 +120,7 @@ function startWalk(title, $maxDepth, $maxLinksPerPage) {
   maxLinksPerPage = $maxLinksPerPage;
 
   iterate(title, initialState, function(node){
+    console.log("Done!");
     drawNode(node);
   });
 }
