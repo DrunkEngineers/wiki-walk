@@ -40,7 +40,7 @@ function buildNode(pageData) {
 
 function getNextState(node, state) {
   var nextDepth = state.depth + 1;
-  var nextAlreadyVisited = pageTable[node.title] != null;
+  var nextAlreadyVisited = _.contains(pageTable, node.title);
 
   var nextState = {
     depth: nextDepth,
@@ -52,7 +52,7 @@ function getNextState(node, state) {
 }
 
 var pageTable = {};
-var maxDepth = 10;
+var maxDepth = 3;
 var initialState = {
   depth: 0,
   alreadyVisited: false,
