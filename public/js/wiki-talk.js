@@ -5,10 +5,8 @@ function readPageData(title, callback) {
     "&iwurl=&indexpageids=&callback=?&titles=" + 
     title;
   var json = $.getJSON(url, function() {
-      console.log("Success reading " + title);
     })
   .success(function(data) {
-    console.log("Second success reading " + title);
     callback(null, data);
   })
   .error(function(err) {
