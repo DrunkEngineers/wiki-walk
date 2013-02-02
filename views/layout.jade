@@ -46,8 +46,8 @@ html
     });
 
     var m = [20, 120, 20, 120],
-        w = 1280 - m[1] - m[3],
-        h = 800 - m[0] - m[2],
+        w = document.width - m[1] - m[3],
+        h = document.height - m[0] - m[2],
         i = 0,
         root;
 
@@ -81,11 +81,22 @@ html
       }
     }
 
+    function collapseAll(n) {
+      n.children.forEach(collapseAll);
+      collapse(n);
+    }
+
+    function collapse(m){
+      m._children = m.children;
+      m.children = null;
+    }
+
     function drawNode(node) {
       root = node;
       root.x0 = h / 2;
       root.y0 = 0;
 
+      collapseAll(root);
       update(root);
     }
 
