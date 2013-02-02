@@ -22,11 +22,9 @@ html
   script
     
     $(document).ready(function(){
-      $('.modal').modal('toggle');
 
       $('.continue').on('click', function(e) {
 
-        console.log('hi');
         var $url = $('#url').val();
         if(!$url) {
           alert('Please enter a url');
@@ -40,7 +38,10 @@ html
 
         $('.modal').modal('toggle');
         //-build($url, $depth, $link);
+      });
 
+      $('.start').on('click', function() {
+        $('.modal').modal('toggle');
       });
     });
 
