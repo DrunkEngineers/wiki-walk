@@ -16,19 +16,29 @@ function iterate(title, state, callback) {
 
       if(nextState.shouldContinue)
       {
-        console.log(node.name);
-        console.log(node.childLinks);
-        for (var i = 0; i < node.childLinks.length - 1; i++) {
-          var nextTitle = node.childLinks[i].title;
-          iterate(nextTitle, nextState, function(childNode) {
-            node.children.push(childNode);
-          })
-        };
+        walkChildren(node, nextState, function(node) {
+          callback(node);
+        })
       }      
-
-      callback(node);
+      else
+      {
+        callback(node);
+      }
     }      
   });
+}
+
+function walkChildren(node, nextState, callback) {
+  console.log(node.name);
+  console.log(node.childLinks);
+  for (var i = 0; i < node.childLinks.length - 1; i++) {
+    var nextTitle = node.childLinks[i].title;
+    iterate(nextTitle, nextState, function(childNode) {
+      node.children.push(childNode);
+    })
+  };
+
+  callback(node);
 }
 
 function buildNode(pageData) {
@@ -66,6 +76,7 @@ function startWalk(title, $maxDepth, $maxLinksPerPage) {
   maxLinksPerPage = $maxLinksPerPage;
 
   iterate(title, initialState, function(node){
+    console.log(node.children.length);
     drawNode(node);
   });
 }

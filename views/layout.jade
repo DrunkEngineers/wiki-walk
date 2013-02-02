@@ -22,14 +22,13 @@ html
   script
     
     $(document).ready(function(){
-      $('.modal').modal('toggle');
 
       $('.continue').on('click', function(e) {
 
-        console.log('hi');
         var $url = $('#url').val();
         if(!$url) {
           alert('Please enter a url');
+          return
         }
         else {
           $url = _.last($url.split("/")).trim()
@@ -39,7 +38,11 @@ html
         var $link = $('#links :selected').val();
 
         $('.modal').modal('toggle');
-        startWalk($url, $depth, $link)
+        startWalk($url, $depth, $link);
+      });
+
+      $('.start').on('click', function() {
+        $('.modal').modal('toggle');
       });
     });
 

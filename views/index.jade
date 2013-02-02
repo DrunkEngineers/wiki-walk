@@ -9,11 +9,13 @@ block content
           span.icon-bar
           span.icon-bar
         a.brand(href='#') WikiWalk 
-          img(src='/images/logo.png', width='20')
+          img(src='/img/logo.png', width='20')         
         .nav-collapse.collapse
           ul.nav
             li.active: a(href='#') Home
             li: a(href='#') About
+          form.navbar-form.pull-right
+            button.start.btn(type='button') Start
 
   .container-fluid
     .modal.fade.hide
@@ -25,7 +27,7 @@ block content
           fieldset
             label(for='url') Wikipedia Link
             input#url.input-xlarge(type='text', placeholder='Enter Wikipedia URL')
-            label(for='depth') Depth
+            label(for='depth') Max Depth
             select#depth
               option(selected, value='1') 1
               option(value='2') 2
@@ -33,12 +35,12 @@ block content
               option(value='4') 4
               option(value='5') 5
               option(value='6') 6
-            label(for='links') Links to Pull
+            label(for='links') Max Links Per Page
             select#links
               option(selected, value='10') 10
               option(value='20') 20
               option(value='30') 30
               option(value='40') 40
       .modal-footer
-        button.cancel.btn(type='button') Cancel
+        button.cancel.btn(type='button',data-dismiss='modal', aria-hidden='true') Cancel
         button.continue.btn.btn-primary(type='button') Continue
