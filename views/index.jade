@@ -1,11 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-
-  p This is a test
-  div.container
-    a.btn
-      font LOL
+  .navbar.navbar-inverse.navbar-fixed-top
+    .navbar-inner
+      .container
+        a.btn.btn-navbar
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.brand(href='#') WikiWalk
+        .nav-collapse.collapse
+          ul.nav
+            li.active: a(href='#') Home
+            li: a(href='#') About
   div(id='body')
