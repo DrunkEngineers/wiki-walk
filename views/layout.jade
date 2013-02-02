@@ -28,6 +28,7 @@ html
         var $url = $('#url').val();
         if(!$url) {
           alert('Please enter a url');
+          return
         }
         else {
           $url = _.last($url.split("/")).trim()
