@@ -12,7 +12,7 @@
 //   });
 // })(jQuery);
 
-function readPageData(title) {
+function readPageData(title, callback) {
   var url = "http://en.wikipedia.org/w/api.php?action=query&prop=links&" +
     "format=json&plnamespace=0&pllimit=400&iwurl=&indexpageids=&callback=?&titles=" + 
     title;
@@ -21,12 +21,10 @@ function readPageData(title) {
     })
   .success(function(data) {
     console.log("Second success reading " + title);
-    alert("Success!");
-    return data;
+    callback(null, data);
   })
   .error(function(err) {
     console.log("Error");
-    alert("Error!");
-    return null;   
+    callback(null, data);  
   })
 }
